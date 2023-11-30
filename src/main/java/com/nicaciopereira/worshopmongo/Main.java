@@ -1,4 +1,4 @@
-package com.nicaciopereira;
+package com.nicaciopereira.worshopmongo;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
