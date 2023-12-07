@@ -1,11 +1,15 @@
-package com.nicaciopereira.worshopmongo.domain;
+package com.nicaciopereira.workshopmongo.domain;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Document(collection = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1l;
-
+    @Id
     private Integer id;
     private String name;
     private String email;
@@ -55,5 +59,4 @@ public class User implements Serializable {
     public int hashCode() {
         return Objects.hash(getId());
     }
-
 }
