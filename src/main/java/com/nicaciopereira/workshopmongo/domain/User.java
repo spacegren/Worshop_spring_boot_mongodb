@@ -10,24 +10,24 @@ import java.util.Objects;
 public class User implements Serializable {
     private static final long serialVersionUID = 1l;
     @Id
-    private Integer id;
+    private String id;
     private String name;
     private String email;
 
     public User(){
     }
-    public User (Integer id , String email, String name){
+    public User (String id , String email, String name){
         super();
         this.id = id;
         this.email = email;
         this.name = name;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

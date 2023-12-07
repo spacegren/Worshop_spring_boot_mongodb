@@ -20,9 +20,10 @@ public class UserResources {
     @Autowired
     private UserService service;
     @GetMapping
-    public ResponseEntity<List<User>>findyAll() {
+    public ResponseEntity<List<UserDTO>>findyAll() {
         List<User> list = service.findAll();
+        List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
         System.out.println("RETORNANDO USERS " + list);
-        return ResponseEntity.ok().body(list);
+        return ResponseEntity.ok().body(listDto);
     }
 }
