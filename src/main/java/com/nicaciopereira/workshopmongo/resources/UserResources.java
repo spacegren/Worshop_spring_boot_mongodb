@@ -7,9 +7,7 @@ import com.nicaciopereira.workshopmongo.services.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,5 +23,10 @@ public class UserResources {
         List<UserDTO> listDto = list.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
         System.out.println("RETORNANDO USERS " + list);
         return ResponseEntity.ok().body(listDto);
+    }
+    @RequestMapping(value="/{id}" , method = RequestMethod.GET)
+    public ResponseEntity<UserDTO>findyById(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(new UserDTO(obj));
     }
 }
