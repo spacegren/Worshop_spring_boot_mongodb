@@ -16,11 +16,12 @@ public class User implements Serializable {
 
     public User(){
     }
-    public User (String id , String email, String name){
+    public User (String id , String name, String email){
         super();
         this.id = id;
-        this.email = email;
         this.name = name;
+        this.email = email;
+
     }
 
     public String getId() {
@@ -30,6 +31,12 @@ public class User implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getEmail() {
         return email;
@@ -38,15 +45,6 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
