@@ -5,6 +5,7 @@ import com.nicaciopereira.workshopmongo.dto.UserDto;
 import com.nicaciopereira.workshopmongo.services.UserService;
 
 
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -50,4 +51,12 @@ public class UserResources {
         return ResponseEntity.noContent().build();
     }
 
+    @RequestMapping(value ="/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody UserDto objDto , @PathVariable String id) {
+        User obj = service.fromDto(objDto);
+        obj.setId(id);
+        obj = service.update(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.noContent().build();
+    }
 }

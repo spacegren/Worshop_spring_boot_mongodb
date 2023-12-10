@@ -35,6 +35,21 @@ public class UserService {
         repo.deleteById(id);
     }
 
+    public User update(User obj){
+        User newObj = repo.findById(obj.getId()).orElse(null);
+        if (newObj == null){
+            throw new ObjectNotFoundExeption("objeto nao encontardo");
+        }
+        updateDate(newObj , obj);
+        return repo.save(newObj);
+    }
+
+    private void updateDate(User newObj, User obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
+
+    }
+
     //dpendendo da situaçao , pra instancia o user posso querer acessar o banco de dados e quem ja tem isso é userservice
     //para manutençao fica mais simples
     public User fromDto(UserDto objDto){
