@@ -30,6 +30,11 @@ public class UserService {
         return repo.insert(obj);
     }
 
+    public void delete(String id){
+        repo.findById(id);
+        repo.deleteById(id);
+    }
+
     //dpendendo da situaçao , pra instancia o user posso querer acessar o banco de dados e quem ja tem isso é userservice
     //para manutençao fica mais simples
     public User fromDto(UserDto objDto){
