@@ -3,6 +3,8 @@ package com.nicaciopereira.workshopmongo.config;
 import com.nicaciopereira.workshopmongo.domain.Post;
 import com.nicaciopereira.workshopmongo.domain.User;
 import com.nicaciopereira.workshopmongo.dto.AutorDto;
+import com.nicaciopereira.workshopmongo.dto.ComentDto;
+import com.nicaciopereira.workshopmongo.dto.UserDto;
 import com.nicaciopereira.workshopmongo.repositories.PostRepositories;
 import com.nicaciopereira.workshopmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,14 @@ public class Instantiation implements CommandLineRunner {
         userRepository.saveAll(Arrays.asList(maria,nala,nicacio));
         Post post1 = new Post(null,sdf.parse("11/12/2023") , "APRENDENDO PROGRAMAR" , "APRENDENDO UM ABRAÇO" ,new AutorDto(maria));
         Post post2 = new Post(null,sdf.parse("11/12/2023") , "BOA NOITE " , "BOA NOITE DE ESTUDOS" , new AutorDto(maria));
+
+        ComentDto c1 = new ComentDto("BOM ESTUDOS MANO" , sdf.parse("12/12/23") , nicacio);
+        ComentDto c2 = new ComentDto("APROVEITE" , sdf.parse("12/12/23"),maria);
+        ComentDto c3 = new ComentDto("TENHA UMA OTIMA NOITE" , sdf.parse("12/12/23"),nala);
+
+        post1.getComents().addAll(Arrays.asList(c1,c2));
+        post2.getComents().addAll(Arrays.asList(c3));
+
 
          postRepositories.saveAll(Arrays.asList(post1,post2));
 
